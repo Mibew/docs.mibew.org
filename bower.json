@@ -1,0 +1,8 @@
+{
+    "name": "docs.mibew.org",
+    "private": true,
+    "dependencies": {
+        "bootstrap": "~3.3.4",
+        "jquery": "~1.11.2"
+    }
+}

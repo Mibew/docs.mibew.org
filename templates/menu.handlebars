@@ -1,0 +1,11 @@
+{{#if this}}
+    <ul class="nav nav-stacked nav-left-indent">
+        {{#each this}}
+        <li>
+            <a href="{{@root.baseUrl}}/{{path}}">{{name}}</a>
+            {{! Render nested menu levels}}
+            {{> menu children}}
+        </li>
+        {{/each}}
+    </ul>
+{{/if}}
