@@ -2,7 +2,7 @@
     <ul class="nav nav-stacked nav-left-indent">
         {{#each this}}
         <li>
-            <a href="{{@root.baseUrl}}/{{path}}">{{name}}</a>
+            <a href="{{@root.baseUrl}}/{{path}}">{{#if file.title}}{{file.title}}{{else}}{{name}}{{/if}}</a>
             {{! Render nested menu levels}}
             {{> menu children}}
         </li>
