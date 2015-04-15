@@ -1,6 +1,5 @@
 var Metalsmith = require('metalsmith'),
     markdown = require('metalsmith-markdown'),
-    permalinks = require('metalsmith-permalinks'),
     assets = require('metalsmith-assets'),
     templates = require('metalsmith-templates'),
     navigation = require('metalsmith-navigation'),
@@ -27,9 +26,6 @@ bower.commands.install([], {}, {})
                 }
             })
             .use(markdown())
-            // Permalink pattern is intentionally omitted to convert files like
-            // path/to/md/file.md to path/to/md/file/index.html
-            .use(permalinks())
             .use(navigation(
                 {
                     contents: {
@@ -39,8 +35,7 @@ bower.commands.install([], {}, {})
                     }
                 },
                 navSettings = {
-                    navListProperty: 'navs',
-                    permalinks: true
+                    navListProperty: 'navs'
                 }
             ))
             .use(templates({
