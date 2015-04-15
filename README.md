@@ -6,6 +6,7 @@ This repository contains documentation from https://docs.mibew.org site.
 ## Building the docs
 
 There are several actions one should perform to build a local copy of the docs:
+
 1. Install [node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/).
 2. Obtain a copy of the repository using `git clone`, download button or another
    way.
