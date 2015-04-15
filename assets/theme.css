@@ -9,3 +9,7 @@ header {
 .nav-left-indent .nav {
     margin-left: 15px;
 }
+
+pre {
+    background-color: #f8f8f8;
+}
