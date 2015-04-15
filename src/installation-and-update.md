@@ -84,8 +84,14 @@ started. Here are the instructions:
 
 ## Update
 
+Mibew starting from 2.0.0-beta.1 version can be updated to later versions using
+built-in update tool.
+
+Notice that there are neither migration tools nor updtate guides from 1.6.x
+versions.
+
 1. Backup your `mibew/configs/config.yml`
-2. Backup your `mibew/images/avatar` folder.
+2. Backup your `mibew/files/avatar` folder.
 3. Backup your database. Although it's not required, it's strongly recommended
    to to so.
 3. Delete all items in mibew folder on the server.
@@ -97,7 +103,7 @@ started. Here are the instructions:
   `/mibew/files/avatar` and `/mibew/cache`
   (`chmod 0700 /mibew/files/avatar && chmod 0700 /mibew/cache`).
 6. Restore all settings in `mibew/configs/config.yml`
-7. Restore contents of mibew/images/avatar folder.
+7. Restore contents of `mibew/files/avatar` folder.
 8. Visit `http://<yourdomain>/mibew/update/` and follow the instructions
    to update the database tables (if needed).
 9. Remove `mibew/install.php` file from your server.
