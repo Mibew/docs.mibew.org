@@ -1,6 +1,7 @@
 ---
 title: Plugins
 show_in_menu: contents
+nav_sort: 10
 ---
 
 # Plugins overview

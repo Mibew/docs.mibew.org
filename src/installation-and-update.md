@@ -1,6 +1,7 @@
 ---
 title: Installation and update
 show_in_menu: contents
+nav_sort: 0
 ---
 
 # Installation and update
