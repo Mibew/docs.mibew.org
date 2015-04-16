@@ -71,12 +71,9 @@ option can be omitted and equals to `0` by default.
 ### Install the plugin
 
 After the plugin's files are in place and the plugin is configured it should be
-installed using Mibew web interface.
-
-To do so you should navigate to `<mibew base URL>/operator/plugin` page and
-click on "_enable_" link in plugin's row.
-
-![Enable plugin link](../assets/images/enable-plugin.png)
+installed using Mibew web interface. To do so you should navigate to
+`<mibew base URL>/operator/plugin` page and click on "_enable_" link in plugin's
+row.
 
 If the plugin was installed and enabled correctly the value in "_state_" column
 will be changed to "_working_". If it does not check apache's error log for
