@@ -15,3 +15,7 @@ There are several actions one should perform to build a local copy of the docs:
 4. Build the site by running `node index.js`
 
 Finally, static documentation site will be placed in `build` directory.
+
+## License
+
+[Creative Commons Attribution-ShareAlike 4.0 International](http://creativecommons.org/licenses/by-sa/4.0/) License.

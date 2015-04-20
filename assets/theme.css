@@ -1,3 +1,12 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
 header {
     margin-bottom: 30px;
 }
@@ -8,4 +17,14 @@ header {
 
 pre {
     background-color: #f8f8f8;
+}
+
+footer {
+    background-color: #f8f8f8;
+    border-top: 1px solid #e7e7e7;
+    bottom: 0;
+    height: 60px;
+    padding-top: 20px;
+    position: absolute;
+    width: 100%;
 }
