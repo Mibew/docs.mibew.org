@@ -455,7 +455,7 @@ constant.
 This event is triggered after a thread has been closed. An associative array
 with the following items is passed to the event handlers:
 
-* "thread": an instance of {@link \Mibew\Thread}.
+* "thread": an instance of `\Mibew\Thread`.
 
 
 #### Post message
