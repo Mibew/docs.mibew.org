@@ -38,8 +38,8 @@ var buildPages = function(callback) {
             // It's documented nowhere but these partials will be passed to
             // Handlebars.js template engine.
             partials: {
-                // File extension is not skipped here because it will be
-                // append automatically using one from rendered file.
+                // File extension is skipped here because it will be append
+                // automatically using one from rendered file.
                 menu: 'menu'
             }
         })
