@@ -488,6 +488,19 @@ the following items is passed to the event handlers:
   `\Mibew\Thread::getMessages()` return value for details of its structure.
 
 
+#### User is ready (since 2.1.0)
+
+The event can be referenced using value of `\Mibew\EventDispatcher\Events::THREAD_USER_IS_READY`
+constant.
+
+This event is triggered after the thread is created, the user passed pre-chat
+survey and all system messages are sent to him. This event is not triggered if
+there are no online operators and the chat cannot be started. An associative
+array with the following items is passed to the event handlers:
+
+* "thread": an instance of `\Mibew\Thread`.
+
+
 ### <a name="users-events"></a>Users events
 
 #### Alter threads
