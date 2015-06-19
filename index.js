@@ -34,7 +34,7 @@ var buildPages = function(callback) {
         // This data will be available inside the templates
         .metadata({
             baseUrl: '',
-            githubUrl: 'https://github.com/mibew/mibew',
+            githubUrl: 'https://github.com/Mibew/mibew',
             // It's documented nowhere but these partials will be passed to
             // Handlebars.js template engine.
             partials: {
