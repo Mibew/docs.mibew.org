@@ -95,20 +95,21 @@ versions.
 2. Backup your `mibew/files/avatar` folder.
 3. Backup your database. Although it's not required, it's strongly recommended
    to to so.
-3. Delete all items in mibew folder on the server.
-4. Upload all files contained in the downloaded archive (retaining the
+3. Disable all plugins
+4. Delete all items in mibew folder on the server.
+5. Upload all files contained in the downloaded archive (retaining the
    directory structure) into mibew folder.
-5. On unix/linux platforms change the owner of `/mibew/files/avatar` and
+6. On unix/linux platforms change the owner of `/mibew/files/avatar` and
   `/mibew/cache` folders to the user, under which the web server is running
   (for instance, www). The owner should have all rights on the folders
   `/mibew/files/avatar` and `/mibew/cache`
   (`chmod 0700 /mibew/files/avatar && chmod 0700 /mibew/cache`).
-6. Restore all settings in `mibew/configs/config.yml`
-7. Restore contents of `mibew/files/avatar` folder.
-8. Visit `http://<yourdomain>/mibew/update/` and follow the instructions
+7. Restore all settings in `mibew/configs/config.yml`
+8. Restore contents of `mibew/files/avatar` folder.
+9. Visit `http://<yourdomain>/mibew/update/` and follow the instructions
    to update the database tables (if needed).
-9. Remove `mibew/install.php` file from your server.
-
+10. Remove `mibew/install.php` file from your server.
+11. Enable disabled plugins.
 
 ## Start work
 
