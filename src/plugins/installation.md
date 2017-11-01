@@ -81,8 +81,8 @@ omitted and equals to `0` by default.
 After the plugin's files are in place and the plugin is properly configured it
 should be installed using the administrative interface of **Mibew Messenger**.
 To do so you should navigate to `<mibew base URL>/operator/plugin` page and
-click on '_enable_' link in the plugin's row.
+click on _'enable'_ link in the plugin's row.
 
-If the plugin was installed and enabled successfully the value in '_state_'
-column will change to '_working_'. If it did not, one should check the error
+If the plugin was installed and enabled successfully the value in _'state'_
+column will change to _'working'_. If it did not, one should check the error
 log of the web server for details of the problem.

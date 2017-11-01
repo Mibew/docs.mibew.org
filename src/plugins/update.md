@@ -36,10 +36,10 @@ It is highly recommended to backup old files before replacement.
 
 After update of the plugin's files, the database should be updated too. To do
 so you should navigate to `<mibew base URL>/operator/plugin` page and click on
-'_update_' link in the plugin's row.
+_'update'_ link in the plugin's row.
 
 It is highly recommended to backup the database before update.
 
-If the plugin was updated successfully the value in '_state_' column will
-change to '_working_'. If it did not, one should check the error log of the
+If the plugin was updated successfully the value in _'state'_ column will
+change to _'working'_. If it did not, one should check the error log of the
 web server for details of the problem.

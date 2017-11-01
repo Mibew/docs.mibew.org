@@ -50,7 +50,7 @@ The event can be referenced using the value of
 This event is triggered after a ban has been created. An associative array with
 the following items is passed to event handlers:
 
-* 'ban': an instance of `\Mibew\Ban` class, the state of the created ban.
+* _'ban'_: an instance of `\Mibew\Ban` class, the state of the created ban.
 
 
 #### Update
@@ -61,8 +61,8 @@ The event can be referenced using the value of
 This event is triggered after a ban has been saved. An associative array with
 the following items is passed to event handlers:
 
- * 'ban': an instance of `\Mibew\Ban` class, the state of the ban after update.
- * 'original_ban': an instance of `\Mibew\Ban` class, the state of the ban
+ * _'ban'_: an instance of `\Mibew\Ban` class, the state of the ban after update.
+ * *'original_ban'*: an instance of `\Mibew\Ban` class, the state of the ban
    before update.
 
 
@@ -74,7 +74,7 @@ The event can be referenced using the value of
 This event is triggered after a ban has been deleted. An associative array with
 the following items is passed to event handlers:
 
-* 'id': integer, ID of the deleted ban.
+* _'id'_: integer, ID of the deleted ban.
 
 
 ### <a name="button-events"></a>Button events
@@ -87,9 +87,9 @@ The event can be referenced using the value of
 This event is triggered after a button has been generated. An associative array
 with the following items is passed to event handlers:
 
-* 'button': an instance of `\Canteen\HTML5\Fragment` class, representation of
+* _'button'_: an instance of `\Canteen\HTML5\Fragment` class, representation of
   the markup of the generated button.
-* 'generator': an instance of `\Mibew\Button\Generator\GeneratorInterface`
+* _'generator'_: an instance of `\Mibew\Button\Generator\GeneratorInterface`
   class that was used for button generation.
 
 
@@ -115,7 +115,7 @@ The event can be referenced using the value of
 This event is triggered after a group has been created. An associative array
 with the following items is passed to event handlers:
 
-* 'group': array containing all data fields of the created group. See
+* _'group'_: array containing all data fields of the created group. See
   `create_group()` function in `libs/groups.php` file for more info.
 
 
@@ -127,8 +127,8 @@ The event can be referenced using the value of
 This event is triggered after a group has been saved. An associative array with
 the following items is passed to event handlers:
 
-* 'group': array, the state of the group after update.
-* 'original_group': array, the state of the group before update.
+* _'group'_: array, the state of the group after update.
+* *'original_group'*: array, the state of the group before update.
 
 
 #### Delete
@@ -139,7 +139,7 @@ The event can be referenced using the value of
 This event is triggered after a group has been deleted. An associative array
 with the following items is passed to event handlers:
 
-* 'id': integer, ID of the deleted group.
+* _'id'_: integer, ID of the deleted group.
 
 
 #### Update operators
@@ -151,9 +151,9 @@ This event is triggered after a set of operators belonging to a group has been
 altered. An associative array with the following items is passed to event
 handlers:
 
-* 'group': array containing all data fields of the group.
-* 'original_operators': array, the list of IDs of operators before update.
-* 'operators': array, the list of IDs of operators after update.
+* _'group'_: array containing all data fields of the group.
+* *'original_operators'*: array, the list of IDs of operators before update.
+* _'operators'_: array, the list of IDs of operators after update.
 
 
 ### <a name="invitation-events"></a>Invitation events
@@ -166,7 +166,7 @@ The event can be referenced using the value of
 This event is triggered after an invitation has been created. An associative
 array with the following items is passed to event handlers:
 
-* 'invitation': an instance of `\Mibew\Thread` class, the state of the thread
+* _'invitation'_: an instance of `\Mibew\Thread` class, the state of the thread
   related to the invitation.
 
 
@@ -178,7 +178,7 @@ The event can be referenced using the value of
 This event is triggered after an invitation has been accepted by a visitor. An
 associative array with the following items is passed to event handlers:
 
-* 'invitation': an instance of `\Mibew\Thread` class, the state of the thread
+* _'invitation'_: an instance of `\Mibew\Thread` class, the state of the thread
   related to the invitation.
 
 
@@ -190,7 +190,7 @@ The event can be referenced using the value of
 This event is triggered after an invitation has been rejected by a visitor. An
 associative array with the following items is passed to event handlers:
 
-* 'invitation': an instance of `\Mibew\Thread` class, the state of the thread
+* _'invitation'_: an instance of `\Mibew\Thread` class, the state of the thread
   related to the invitation.
 
 
@@ -203,7 +203,7 @@ This event is triggered after an invitation has been ignored by a visitor and
 was automatically closed by the system. An associative array with the following
 items is passed to event handlers:
 
-* 'invitation': an instance of `\Mibew\Thread` class, the state of the thread
+* _'invitation'_: an instance of `\Mibew\Thread` class, the state of the thread
   related to the invitation.
 
 
@@ -219,10 +219,10 @@ This event is triggered if an operator cannot be authenticated by the system
 implement custom authentication logic. An associative array with the following
 items is passed to event handlers:
 
-* 'operator': array, if a plugin has extracted operator from the incoming
+* _'operator'_: array, if a plugin has extracted operator from the incoming
   request, it should populate the array with the operator's data. See
   `update_operator()` function in `libs/operator.php` file for more info.
-* 'request': an instance of `\Symfony\Component\HttpFoundation\Request` class,
+* _'request'_: an instance of `\Symfony\Component\HttpFoundation\Request` class,
   incoming request. Can be used by a plugin to extract an operator.
 
 
@@ -235,8 +235,8 @@ This event is triggered after an operator has been logged in using the
 standard login form. An associative array with the following items is passed
 to event handlers:
 
-* 'operator': array containing all data fields of the operator.
-* 'remember': boolean, indicates whether the system should "remember" the
+* _'operator'_: array containing all data fields of the operator.
+* _'remember'_: boolean, indicates whether the system should "remember" the
   operator.
 
 
@@ -256,7 +256,7 @@ The event can be referenced using the value of
 This event is triggered after an operator has been created. An associative
 array with the following items is passed to event handlers:
 
-* 'operator': array containing all data fields of the operator.
+* _'operator'_: array containing all data fields of the operator.
 
 
 #### Update
@@ -267,8 +267,8 @@ The event can be referenced using the value of
 This event is triggered after an operator has been saved. An associative array
 with the following items is passed to event handlers:
 
-* 'operator': array, the state of the operator after update.
-* 'original_operator': array, the state of the operator before update.
+* _'operator'_: array, the state of the operator after update.
+* *'original_operator'*: array, the state of the operator before update.
 
 
 #### Delete
@@ -279,7 +279,7 @@ The event can be referenced using the value of
 This event is triggered after an operator has been deleted. An associative
 array with the following items is passed to event handlers:
 
-* 'id': integer, ID of the deleted operator.
+* _'id'_: integer, ID of the deleted operator.
 
 
 ### <a name="page-events"></a>Page events
@@ -294,12 +294,12 @@ administrative interface of **Mibew Messenger**. It provides plugins an
 ability to connect pages to custom CSS files or add inline styles to pages.
 An associative array with the following items is passed to event handlers:
 
-* 'request': an instance of `\Symfony\Component\HttpFound-ation\Request` class.
-  CSS files will be attached to the requested page.
-* 'css': array of assets. Each asset can be either a string with the relative
-  URL of a CSS file or an array with 'content', 'type' and 'weight' items. See
-  `\Mibew\Asset\AssetManagerInterface::getCssAssets()` for more info. One
-  should modify this array to add (or remove) extra CSS files.
+* _'request'_: an instance of `\Symfony\Component\HttpFound-ation\Request`
+  class. CSS files will be attached to the requested page.
+* _'css'_: array of assets. Each asset can be either a string with the relative
+  URL of a CSS file or an array with _'content'_, _'type'_ and _'weight'_
+  items. See `\Mibew\Asset\AssetManagerInterface::getCssAssets()` for more
+  info. One should modify this array to add (or remove) extra CSS files.
 
 
 #### Add JavaScript
@@ -312,10 +312,10 @@ administrative interface of **Mibew Messenger**. It provides plugins an ability
 to connect pages to custom JavaScript files or add inline scripts to pages.
 An associative array with the following items is passed to event handlers:
 
-* 'request': an instance of `\Symfony\Component\HttpFoundation\Request` class.
+* _'request'_: an instance of `\Symfony\Component\HttpFoundation\Request` class.
   JavaScript files will be attached to the requested page.
-* 'js': array of assets. Each asset can be either a string with the relative
-  URL of a JavaScript file or an array with 'content', 'type' and 'weight'
+* _'js'_: array of assets. Each asset can be either a string with the relative
+  URL of a JavaScript file or an array with _'content'_, _'type'_ and _'weight'_
   items. See `\Mibew\Asset\AssetManagerInterface::getJsAssets()` for more info.
   One should modify this array to add (or remove) extra JavaScript files.
 
@@ -329,9 +329,9 @@ This event is triggered before options of JavaScript plugins are attached to a
 page. It provides plugins an ability to pass some data to the client side.
 An associative array with the following items is passed to event handlers:
 
-* 'request': an instance of `\Symfony\Component\HttpFoundation\Request` class.
+* _'request'_: an instance of `\Symfony\Component\HttpFoundation\Request` class.
   Options will be attached to the requested page.
-* 'plugins': associative array, whose keys are names of plugins and values are
+* _'plugins'_: associative array, whose keys are names of plugins and values are
   their options. One should modify this array to add (or alter) plugins
   options.
 
@@ -346,9 +346,9 @@ The event can be referenced using the value of
 This event is triggered if the access to a resource is denied. An associative
 array with the following items is passed to event handlers:
 
-* 'request': an instance of `\Symfony\Component\HttpFoundation\Request` class,
+* _'request'_: an instance of `\Symfony\Component\HttpFoundation\Request` class,
   incoming request object.
-* 'response': an instance of `\Symfony\Component\HttpFoundation\Response`
+* _'response'_: an instance of `\Symfony\Component\HttpFoundation\Response`
   class, if a plugin wants to send a custom response to a client it should
   attach a response object to this field.
 
@@ -361,9 +361,9 @@ The event can be referenced using the value of
 This event is triggered if a resource is not found. An associative array with
 the following items is passed to event handlers:
 
-* 'request': an instance of `\Symfony\Component\HttpFoundation\Request` class,
+* _'request'_: an instance of `\Symfony\Component\HttpFoundation\Request` class,
   incoming request object.
-* 'response': an instance of `\Symfony\Component\HttpFoundation\Response`
+* _'response'_: an instance of `\Symfony\Component\HttpFoundation\Response`
   class, if a plugin wants to send a custom response to a client it should
   attach a response object to this field.
 
@@ -379,7 +379,7 @@ This event is triggered after all routes has been loaded. It provides plugins
 an ability to alter the routes collection before it will be used. An
 associative array with the following items is passed to event handlers:
 
-* 'routes': an instance of `\Symfony\Component\Routing\RouteCollection` class.
+* _'routes'_: an instance of `\Symfony\Component\Routing\RouteCollection` class.
 
 
 ### <a name="thread-events"></a>Thread events
@@ -393,16 +393,16 @@ This event is triggered if an API function is called at the client side in
 the **Chat application**, but the system is not aware of this function.
 
 Plugins can implement custom API functions by attaching handlers to this event.
-If a plugin should return some results, it should use 'results' element of
+If a plugin should return some results, it should use _'results'_ element of
 the event arguments array (see below).
 
 An associative array with the following items is passed to event handlers:
 
-* 'request_processor': an instance of `\Mibew\RequestProcessor\ThreadProcessor`
-  class that handles the current call.
-* 'function': string, name of the function that was called.
-* 'arguments': associative array of arguments passed to the function.
-* 'results': array, the list of results of the function call.
+* *'request_processor'*: an instance of
+  `\Mibew\RequestProcessor\ThreadProcessor` class that handles the current call.
+* _'function'_: string, name of the function that was called.
+* _'arguments'_: associative array of arguments passed to the function.
+* _'results'_: array, the list of results of the function call.
 
 Here is an example of the event handler:
 
@@ -430,7 +430,7 @@ The event can be referenced using the value of
 This event is triggered after a thread has been created. An associative array
 with the following items is passed to event handlers:
 
-* 'thread': an instance of `\Mibew\Thread` class, the state of the created
+* _'thread'_: an instance of `\Mibew\Thread` class, the state of the created
   thread.
 
 
@@ -442,9 +442,9 @@ The event can be referenced using the value of
 This event is triggered after a thread has been saved. An associative array
 with the following items is passed to event handlers:
 
-* 'thread': an instance of `\Mibew\Thread` class, the state of the thread after
-  update.
-* 'original_thread': an instance of `\Mibew\Thread` class, the state of the
+* _'thread'_: an instance of `\Mibew\Thread` class, the state of the thread
+  after update.
+* *'original_thread'*: an instance of `\Mibew\Thread` class, the state of the
   thread before update.
 
 
@@ -456,7 +456,7 @@ The event can be referenced using the value of
 This event is triggered after a thread has been deleted. An associative array
 with the following items is passed to event handlers:
 
-* 'id': integer, ID of the deleted thread.
+* _'id'_: integer, ID of the deleted thread.
 
 
 #### Close
@@ -467,7 +467,7 @@ The event can be referenced using the value of
 This event is triggered after a thread has been closed. An associative array
 with the following items is passed to event handlers:
 
-* 'thread': an instance of `\Mibew\Thread` class, the state of the closed
+* _'thread'_: an instance of `\Mibew\Thread` class, the state of the closed
   thread.
 
 
@@ -481,11 +481,11 @@ provides plugins an ability to alter the message itself and/or its kind or
 options. An associative array with the following items is passed to event
 handlers:
 
-* 'thread': an instance of `\Mibew\Thread` class, the state of the thread.
-* 'message_kind': integer, a kind of the message. See `KIND_*` constants in
+* _'thread'_: an instance of `\Mibew\Thread` class, the state of the thread.
+* *'message_kind'*: integer, a kind of the message. See `KIND_*` constants in
   `\Mibew\Thread` for more info.
-* 'message_body': string, a body of the message.
-* 'message_options': associative array, the list of options passed to
+* *'message_body'*: string, a body of the message.
+* *'message_options'*: associative array, the list of options passed to
   `\Mibew\Thread::postMessage()` method as a third argument.
 
 
@@ -498,8 +498,8 @@ This event is triggered after messages related to a thread has been loaded. It
 provides plugins an ability to alter messages. An associative array with the
 following items is passed to event handlers:
 
-* 'thread': an instance of `\Mibew\Thread` class, the state of the thread.
-* 'messages': array, the list of messages. Each message is an associative
+* _'thread'_: an instance of `\Mibew\Thread` class, the state of the thread.
+* _'messages'_: array, the list of messages. Each message is an associative
   array. See the return value of `\Mibew\Thread::getMessages()` method for more
   info.
 
@@ -515,7 +515,7 @@ to him. This event is not triggered if there are no operators online and
 therefore the chat cannot be started. An associative array with the following
 items is passed to event handlers:
 
-* 'thread': an instance of `\Mibew\Thread` class, the state of the thread.
+* _'thread'_: an instance of `\Mibew\Thread` class, the state of the thread.
 
 
 ### <a name="users-events"></a>Users events
@@ -531,7 +531,7 @@ alter the list. A plugin can attach some custom fields to each thread or even
 completely replace the whole list. An associative array with the following
 items is passed to event handlers:
 
-* 'threads': array of threads, each item is the data related to a single
+* _'threads'_: array of threads, each item is the data related to a single
   thread. See `\Mibew\RequestProcessor\UsersProcessor\apiUpdateThreads()`
   method for more info.
 
@@ -546,13 +546,13 @@ sent to the **Users application** on the client side. It provides plugins an
 ability to load, sort and/or trim the visitors list. An associative array with
 the following items is passed to event handlers:
 
-* 'visitors': array of visitors, each item is the data related to a single
+* _'visitors'_: array of visitors, each item is the data related to a single
    visitor. Each visitor array must contain at least following keys:
-   'id', 'userName', 'userAgent', 'userIp', 'remote', 'firstTime', 'lastTime',
-   'invitations', 'chats', 'invitationInfo'. If there are no active visitors,
-   an empty array should be used.
+   _'id'_, _'userName'_, _'userAgent'_, _'userIp'_, _'remote'_, _'firstTime'_,
+   _'lastTime'_, _'invitations'_, _'chats'_, _'invitationInfo'_. If there are
+   no active visitors, an empty array should be used.
 
-If a plugin will not set the 'visitors' item, the default system loader will
+If a plugin will not set the _'visitors'_ item, the default system loader will
 be used.
 
 
@@ -567,8 +567,8 @@ alter the list. A plugin can attach some custom fields to each visitor or even
 completely replace the whole list. An associative array with the following
 items is passed to event handlers:
 
-* 'visitors': array of visitors, each item is the data related to a single
-  visitor. See '[Load visitors](#load-visitors-event)' event and
+* _'visitors'_: array of visitors, each item is the data related to a single
+  visitor. See "[Load visitors](#load-visitors-event)" event and
   `\Mibew\RequestProcessor\UsersProcessor\apiUpdateVisitors()` method
   for more info.
 
@@ -582,16 +582,16 @@ This event is triggered if an API function is called at the client side in
 the **Users application**, but the system is not aware of this function.
 
 Plugins can implement custom API functions by attaching handlers to this event.
-If a plugin should return some results, it should use 'results' element of
+If a plugin should return some results, it should use _'results'_ element of
 the event arguments array (see below).
 
 An associative array with the following items is passed to event handlers:
 
-* 'request_processor': an instance of `\Mibew\RequestProcessor\UsersProcessor`
+* *'request_processor'*: an instance of `\Mibew\RequestProcessor\UsersProcessor`
   class that handles the current call.
-* 'function': string, name of the function that was called.
-* 'arguments': associative array of arguments passed to the function.
-* 'results': array, the list of results of the function call.
+* _'function'_: string, name of the function that was called.
+* _'arguments'_: associative array of arguments passed to the function.
+* _'results'_: array, the list of results of the function call.
 
 Here is an example of the event handler:
 
@@ -622,8 +622,8 @@ This event is triggered when a visitor has been tracked by the **Widget** for
 the first time. An associative array with the following items is passed to
 event handlers:
 
-* 'visitor': array populated with the data of a visitor. See returned value of
-  `track_get_visitor_by_id()` function from `libs/track.php` for more info.
+* _'visitor'_: array populated with the data of a visitor. See returned value
+  of `track_get_visitor_by_id()` function from `libs/track.php` for more info.
 
 
 #### Track
@@ -635,12 +635,12 @@ This event is triggered every time a visitor has been tracked by the
 **Widget**. An associative array with the following items is passed to event
 handlers:
 
-* 'visitor': array populated with the data of a visitor. See returned value of
+* _'visitor'_: array populated with the data of a visitor. See returned value of
   `track_get_visitor_by_id()` function from `libs/track.php` for more info.
 
 Note that when a visitor will be tracked by the **Widget** for the first time,
-initially the '[Create](#visitor-create-event)' event will be triggered, and
-the 'Track' event will be triggered only afterwards.
+initially the "[Create](#visitor-create-event)" event will be triggered, and
+the "Track" event will be triggered only afterwards.
 
 #### Delete old
 
@@ -650,7 +650,7 @@ The event can be referenced using the value of
 This event is triggered after old visitors have been deleted. An associative
 array with the following items is passed to event handlers:
 
-* 'visitors': array, the list of IDs of removed visitors.
+* _'visitors'_: array, the list of IDs of removed visitors.
 
 
 ### <a name="widget-events"></a>Widget events
@@ -663,15 +663,15 @@ The event can be referenced using the value of
 This event is triggered every time the **Widget** data is ready to be sent. An
 associative array with the following items is passed to event listeners:
 
-* 'visitor': array populated with the data of a visitor. See returned value of
+* _'visitor'_: array populated with the data of a visitor. See returned value of
   `track_get_visitor_by_id()` function from `libs/track.php` for more info.
-* 'request' an instance of `\Symfony\Component\HttpFoundation\Request` class,
+* _'request'_ an instance of `\Symfony\Component\HttpFoundation\Request` class,
   incoming request object.
-* 'response': array, a set of data that will be sent to the **Widget**. See
+* _'response'_: array, a set of data that will be sent to the **Widget**. See
   description of its stucture and an example use case below.
-* 'route_url_generator': an instance of
+* *'route_url_generator'*: an instance of
   `\Mibew\Routing\Generator\SecureUrlGeneratorInterface` class.
-* 'asset_url_generator': an instance of
+* *'asset_url_generator'*: an instance of
   `\Mibew\Asset\Generator\UrlGeneratorInterface` class.
 
 This event can be used to perform something at the page the visitor is

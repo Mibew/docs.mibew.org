@@ -62,7 +62,7 @@ of **Mibew Messenger** will be available in `src/release` directory.
 When the archive with **Mibew Messenger** is downloaded the installation
 process can be started. Here are the instructions:
 
-1. Create the directory with name 'mibew' in the document root of your
+1. Create the directory with name _'mibew'_ in the document root of your
    website.
 2. Upload all files from the installation archive (retaining the directory
    structure) into the created directory.
@@ -92,7 +92,7 @@ process can be started. Here are the instructions:
     `http://<yourdomain>/cron?cron_key=<cron key>`
 
     The full URL including the secret "cron key" used to protect against
-    unauthorized access can be seen on the 'General' tab at the 'Settings'
+    unauthorized access can be seen on the _'General'_ tab at the _'Settings'_
     page in the administrative interface of your **Mibew Messenger**.
 
 
@@ -137,5 +137,5 @@ take several steps to get started:
 1. Configure and generate the button code at
    `http://<yourdomain>/mibew/operator/button-code`.
 2. Add HTML code of the button to a target's site markup.
-3. Wait for visitors on 'Pending users' page in the administrative interface
+3. Wait for visitors on _'Pending users'_ page in the administrative interface
    of your **Mibew Messenger** (i.e. `http://<yourdomain>/mibew/operator/users`).
