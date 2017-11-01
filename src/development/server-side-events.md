@@ -326,7 +326,7 @@ The event can be referenced using the value of
 `\Mibew\EventDispatcher\Events::PAGE_ADD_JS_PLUGIN_OPTIONS` constant.
 
 This event is triggered before options of JavaScript plugins are attached to a
-page. It provides plugins an ability to pass some data to the client side.
+page. It provides plugins an ability to pass some data to the **Client** side.
 An associative array with the following items is passed to event handlers:
 
 * _'request'_: an instance of `\Symfony\Component\HttpFoundation\Request` class.
@@ -349,7 +349,7 @@ array with the following items is passed to event handlers:
 * _'request'_: an instance of `\Symfony\Component\HttpFoundation\Request` class,
   incoming request object.
 * _'response'_: an instance of `\Symfony\Component\HttpFoundation\Response`
-  class, if a plugin wants to send a custom response to a client it should
+  class, if a plugin wants to send a custom response to a **Client** it should
   attach a response object to this field.
 
 
@@ -364,7 +364,7 @@ the following items is passed to event handlers:
 * _'request'_: an instance of `\Symfony\Component\HttpFoundation\Request` class,
   incoming request object.
 * _'response'_: an instance of `\Symfony\Component\HttpFoundation\Response`
-  class, if a plugin wants to send a custom response to a client it should
+  class, if a plugin wants to send a custom response to a **Client** it should
   attach a response object to this field.
 
 
@@ -389,7 +389,7 @@ associative array with the following items is passed to event handlers:
 The event can be referenced using the value of
 `\Mibew\EventDispatcher\Events::THREAD_FUNCTION_CALL` constant.
 
-This event is triggered if an API function is called at the client side in
+This event is triggered if an API function is called at the **Client** side in
 the **Chat application**, but the system is not aware of this function.
 
 Plugins can implement custom API functions by attaching handlers to this event.
@@ -526,7 +526,7 @@ The event can be referenced using the value of
 `\Mibew\EventDispatcher\Events::USERS_UPDATE_THREADS_ALTER` constant.
 
 This event is triggered before the list of threads is sent to the
-**Users application** on the client side. It provides plugins an ability to
+**Users application** on the **Client** side. It provides plugins an ability to
 alter the list. A plugin can attach some custom fields to each thread or even
 completely replace the whole list. An associative array with the following
 items is passed to event handlers:
@@ -542,9 +542,9 @@ The event can be referenced using the value of
 `\Mibew\EventDispatcher\Events::USERS_UPDATE_VISITORS_LOAD` constant.
 
 This event is triggered before the list of active site visitors is loaded to be
-sent to the **Users application** on the client side. It provides plugins an
-ability to load, sort and/or trim the visitors list. An associative array with
-the following items is passed to event handlers:
+sent to the **Users application** on the **Client** side. It provides plugins
+an ability to load, sort and/or trim the visitors list. An associative array
+with the following items is passed to event handlers:
 
 * _'visitors'_: array of visitors, each item is the data related to a single
    visitor. Each visitor array must contain at least following keys:
@@ -562,10 +562,10 @@ The event can be referenced using the value of
 `\Mibew\EventDispatcher\Events::USERS_UPDATE_VISITORS_ALTER` constant.
 
 This event is triggered before the list of active site visitors list is sent to
-the **Users application** on the client side. It provides plugins an ability to
-alter the list. A plugin can attach some custom fields to each visitor or even
-completely replace the whole list. An associative array with the following
-items is passed to event handlers:
+the **Users application** on the **Client** side. It provides plugins an
+ability to alter the list. A plugin can attach some custom fields to each
+visitor or even completely replace the whole list. An associative array with
+the following items is passed to event handlers:
 
 * _'visitors'_: array of visitors, each item is the data related to a single
   visitor. See "[Load visitors](#load-visitors-event)" event and
@@ -578,7 +578,7 @@ items is passed to event handlers:
 The event can be referenced using the value of
 `\Mibew\EventDispatcher\Events::USERS_FUNCTION_CALL` constant.
 
-This event is triggered if an API function is called at the client side in
+This event is triggered if an API function is called at the **Client** side in
 the **Users application**, but the system is not aware of this function.
 
 Plugins can implement custom API functions by attaching handlers to this event.

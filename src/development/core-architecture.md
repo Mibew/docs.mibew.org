@@ -7,10 +7,10 @@ nav_sort: 0
 # Core Architecture
 
 The **Core** of **Mibew Messenger** can be divided into three basic parts: the
-**Server** side application, client side applications and the **Widget**. This
-page does not describe low-level organization of the parts, but provides their
-overview, describes their purpose and illustrates how they interacts with each
-other.
+**Server** side application, **Client** side applications and the **Widget**.
+This page does not describe low-level organization of the parts, but provides
+their overview, describes their purpose and illustrates how they interacts with
+each other.
 
 
 ## Server side application
@@ -54,7 +54,7 @@ separately. At the moment the most important subsystems are:
 
 ## Client side applications
 
-Client side applications are written in JavaScript. They're built on top of
+**Client** side applications are written in JavaScript. They're built on top of
 [Marionette.js](http://marionettejs.com/) framework and utilize several other
 third party libraries:
 
@@ -62,28 +62,29 @@ third party libraries:
 * [Underscore.js](http://underscorejs.org/) is used to simplify routine
   JavaScript operations.
 * [Backbone.js](http://backbonejs.org/) is the base of Marionette.js framework.
-* [Handlebars.js](http://handlebarsjs.com/) is the client side template engine.
+* [Handlebars.js](http://handlebarsjs.com/) is the **Client** side template
+  engine.
 * [Vex](http://github.hubspot.com/vex/docs/welcome/) provides beautiful and
   customizable dialog popups.
 * [Validator.js](https://github.com/chriso/validator.js) simplifies data
-  validation at the client side.
+  validation at the **Client** side.
 
-As it was pointed above a client side application is a Marionette.js
+As it was pointed above a **Client** side application is a Marionette.js
 application that performs a limited number of tasks. One should note that not
-all JavaScript files in **Mibew Messenger** are related to client side
-applications. At the moment there are three client side applications:
+all JavaScript files in **Mibew Messenger** are related to **Client** side
+applications. At the moment there are three **Client** side applications:
 
 * **Chat application**.
 * **Users application**.
 * **Thread log application**.
 
-**Chat application** implements all client side logic for both user and
+**Chat application** implements all **Client** side logic for both user and
 operator chat windows. The application communicates with the **Server** side
 application using the special RPC-like protocol.
 
-**Users application** implements all client side logic for the page with the
-list of awaiting users. The application communicates with the **Server** side
-application using the special RPC-like protocol.
+**Users application** implements all **Client** side logic for the page with
+the list of awaiting users. The application communicates with the **Server**
+side application using the special RPC-like protocol.
 
 **Thread log application** is a stub application that only renders thread log.
 This application does not exchange data with the **Server** side application.
@@ -94,7 +95,7 @@ This application does not exchange data with the **Server** side application.
 This is just an overview of the interaction. It does not contain a full
 description of low level stuff that powers the interaction.
 
-Interaction between a client side application and the **Server** side
+Interaction between a **Client** side application and the **Server** side
 application is an RPC-like interaction. Let's call interacting parties
 Alice and Bob. Each data package that is transferred from Alice to Bob
 may contain requests for functions invocation and results of previous Bob's
@@ -104,7 +105,7 @@ Alice can synchronously call several functions at Bob's side. Each function can
 use results of previously called functions as its arguments. Such behaviour
 provides unlimited flexibility and reduces the number of transferred packages.
 
-A part of a client side application (namely `Mibew.Server` object which is
+A part of a **Client** side application (namely `Mibew.Server` object which is
 defined in `js/source/default/server.js`) sends AJAX request to the web server
 of **Mibew Messenger** at regular intervals. Also there is an option to send
 such request immediately.
@@ -112,12 +113,12 @@ such request immediately.
 Encoded package is sent as the body of HTTP(S) POST request. The **Server**
 side application invokes all requested functions and generates the response
 package in JSON format. If the **Server** side application needs to call
-something at the client side, requests for these calls should be included in
-the response package.
+something at the **Client** side, requests for these calls should be included
+in the response package.
 
 At the **Server** side `\Mibew\RequestProcessor\ClientSideProcessor` class is
 responsible for the interaction. Actually it's an abstract class, so requests
-from different client side applications are served by different requests
+from different **Client** side applications are served by different requests
 processors:
 
 * `\Mibew\RequestProcessor\ThreadProcessor` is used to interact with the
