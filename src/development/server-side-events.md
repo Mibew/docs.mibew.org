@@ -6,17 +6,18 @@ nav_sort: 20
 
 # Server side events
 
-Mibew provides Events subsystem that can be used by plugins. All events logic
-encapsulated inside `\Mibew\EventDispatcher\EventDispatcher` class.
+**Mibew Messenger** provides Events subsystem that can be used by plugins. All
+events logic encapsulated inside `\Mibew\EventDispatcher\EventDispatcher`
+class.
 
-There are several common actions that can be done with event dispatcher:
+There are several common actions that can be done with the event dispatcher:
 
 * attach a listener to an event using
   `\Mibew\EventDispatcher\EventDispatcher::attachListener()` method.
-* detach a listener from the event using
+* detach a listener from an event using
   `\Mibew\EventDispatcher\EventDispatcher::detachListener()` method.
-* trigger event using `\Mibew\EventDispatcher\EventDispatcher::triggerEvent()`
-  method.
+* trigger an event using
+  `\Mibew\EventDispatcher\EventDispatcher::triggerEvent()` method.
 
 To get more info about these actions take a look at the source code of
 `\Mibew\EventDispatcher\EventDispatcher` class.
@@ -24,382 +25,392 @@ To get more info about these actions take a look at the source code of
 
 ## List of events
 
-* [Ban events](#ban-events)
-* [Button events](#button-events)
-* [Cron events](#cron-events)
-* [Group events](#group-events)
-* [Invitation events](#invitation-events)
-* [Operator events](#operator-events)
-* [Page events](#page-events)
-* [Resource events](#resource-events)
-* [Routing events](#routing-events)
-* [Thread events](#thread-events)
-* [Users events](#users-events)
-* [Visitor events](#visitor-events)
-* [Widget events](#widget-events)
+* [Ban events](#ban-events).
+* [Button events](#button-events).
+* [Cron events](#cron-events).
+* [Group events](#group-events).
+* [Invitation events](#invitation-events).
+* [Operator events](#operator-events).
+* [Page events](#page-events).
+* [Resource events](#resource-events).
+* [Routing events](#routing-events).
+* [Thread events](#thread-events).
+* [Users events](#users-events).
+* [Visitor events](#visitor-events).
+* [Widget events](#widget-events).
 
 
 ### <a name="ban-events"></a>Ban events
 
 #### Create
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::BAN_CREATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::BAN_CREATE` constant.
 
-This event is triggered after a ban has been created. An associative
-array with the following items is passed to the event handlers:
+This event is triggered after a ban has been created. An associative array with
+the following items is passed to event handlers:
 
-* "ban": an instance of `\Mibew\Ban` class.
+* 'ban': an instance of `\Mibew\Ban` class, the state of the created ban.
 
 
 #### Update
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::BAN_UPDATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::BAN_UPDATE` constant.
 
-This event is triggered after a ban is saved. An associative array with
-the following items is passed to the event handlers:
+This event is triggered after a ban has been saved. An associative array with
+the following items is passed to event handlers:
 
- * "ban": an instance of `\Mibew\Ban`, the state of the ban after the update.
- * "original_ban": an instance of `\Mibew\Ban`, the state of the ban before the
-   update.
+ * 'ban': an instance of `\Mibew\Ban` class, the state of the ban after update.
+ * 'original_ban': an instance of `\Mibew\Ban` class, the state of the ban
+   before update.
 
 
 #### Delete
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::BAN_DELETE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::BAN_DELETE` constant.
 
-This event is triggered after a ban has been deleted. An associative
-array with the following items is passed to the event handlers:
+This event is triggered after a ban has been deleted. An associative array with
+the following items is passed to event handlers:
 
-* "id": int, deleted ban ID.
+* 'id': integer, ID of the deleted ban.
 
 
 ### <a name="button-events"></a>Button events
 
 #### Generate
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::BUTTON_GENERATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::BUTTON_GENERATE` constant.
 
-This event is triggered after a button has been generated. An associative
-array with the following items is passed to the event handlers:
+This event is triggered after a button has been generated. An associative array
+with the following items is passed to event handlers:
 
-* "button": an instance of `\Canteen\HTML5\Fragment` which
-   represents markup of the button.
-* "generator": an instance of `\Mibew\Button\Generator\GeneratorInterface` which
-  is used for button generation.
+* 'button': an instance of `\Canteen\HTML5\Fragment` class, representation of
+  the markup of the generated button.
+* 'generator': an instance of `\Mibew\Button\Generator\GeneratorInterface`
+  class that was used for button generation.
 
 
 ### <a name="cron-events"></a>Cron events
 
 #### Run
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::CRON_RUN`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::CRON_RUN` constant.
 
-This event is triggered when cron is run. It provides an ability for plugins to
-perform custom maintenance actions.
+This event is triggered when system cron tasks are running (more specifically
+after the statistics calculation but before the check for updates). It
+provides plugins an ability to perform custom maintenance operations.
 
 
 ### <a name="group-events"></a>Group events
 
 #### Create
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::GROUP_CREATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::GROUP_CREATE` constant.
 
 This event is triggered after a group has been created. An associative array
-with the following items is passed to the event handlers:
+with the following items is passed to event handlers:
 
-* "group": group's array.
+* 'group': array containing all data fields of the created group. See
+  `create_group()` function in `libs/groups.php` file for more info.
 
 
 #### Update
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::GROUP_UPDATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::GROUP_UPDATE` constant.
 
-This event is triggered after a group is saved. An associative array with the
-following items is passed to the event handlers:
+This event is triggered after a group has been saved. An associative array with
+the following items is passed to event handlers:
 
-* "group": array, the state of the group after update.
-* "original_group": array, the state of the group before update.
+* 'group': array, the state of the group after update.
+* 'original_group': array, the state of the group before update.
 
 
 #### Delete
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::GROUP_DELETE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::GROUP_DELETE` constant.
 
 This event is triggered after a group has been deleted. An associative array
-with the following items is passed to the event handlers:
+with the following items is passed to event handlers:
 
-* "id": int, deleted group ID.
+* 'id': integer, ID of the deleted group.
 
 
 #### Update operators
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::GROUP_UPDATE_OPERATORS`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::GROUP_UPDATE_OPERATORS` constant.
 
-This event is triggered after a set of operators related with a group has been
-changed. An associative array with the following items is passed to the event
+This event is triggered after a set of operators belonging to a group has been
+altered. An associative array with the following items is passed to event
 handlers:
 
-* "group": group's array.
-* "original_operators": array, list of operators IDs before the update.
-* "operators": array, list of operators IDs after the update.
+* 'group': array containing all data fields of the group.
+* 'original_operators': array, the list of IDs of operators before update.
+* 'operators': array, the list of IDs of operators after update.
 
 
 ### <a name="invitation-events"></a>Invitation events
 
 #### Create
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::INVITATION_CREATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::INVITATION_CREATE` constant.
 
 This event is triggered after an invitation has been created. An associative
-array with the following items is passed to the event handlers:
+array with the following items is passed to event handlers:
 
-* "invitation": an instance of `\Mibew\Thread` class.
+* 'invitation': an instance of `\Mibew\Thread` class, the state of the thread
+  related to the invitation.
 
 
 #### Accept
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::INVITATION_ACCEPT`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::INVITATION_ACCEPT` constant.
 
 This event is triggered after an invitation has been accepted by a visitor. An
-associative array with the following items is passed to the event handlers:
+associative array with the following items is passed to event handlers:
 
-* "invitation": an instance of `\Mibew\Thread` class.
+* 'invitation': an instance of `\Mibew\Thread` class, the state of the thread
+  related to the invitation.
 
 
 #### Reject
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::INVITATION_REJECT`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::INVITATION_REJECT` constant.
 
 This event is triggered after an invitation has been rejected by a visitor. An
-associative array with the following items is passed to the event handlers:
+associative array with the following items is passed to event handlers:
 
-* "invitation": an instance of `\Mibew\Thread` class.
+* 'invitation': an instance of `\Mibew\Thread` class, the state of the thread
+  related to the invitation.
 
 
 #### Ignore
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::INVITATION_IGNORE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::INVITATION_IGNORE` constant.
 
 This event is triggered after an invitation has been ignored by a visitor and
-automatically closed by the system. An associative array with the following
-items is passed to the event handlers:
+was automatically closed by the system. An associative array with the following
+items is passed to event handlers:
 
-* "invitation": an instance of `\Mibew\Thread` class.
+* 'invitation': an instance of `\Mibew\Thread` class, the state of the thread
+  related to the invitation.
 
 
 ### <a name="operator-events"></a>Operator events
 
 #### Authenticate
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::OPERATOR_AUTHENTICATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::OPERATOR_AUTHENTICATE` constant.
 
-This event is triggered if an operator cannot be authenticated by the system. It
-provides an ability for plugins to implement custom authentication logic. An
-associative array with the following items is passed to the event handlers:
+This event is triggered if an operator cannot be authenticated by the system
+(i.e. the operator is not logged in yet). It provides plugins an ability to
+implement custom authentication logic. An associative array with the following
+items is passed to event handlers:
 
-* "operator": array, if a plugin has extracted operator from the request
-  it should set operator's data to this field.
-* "request": `\Symfony\Component\HttpFoundation\Request`,
+* 'operator': array, if a plugin has extracted operator from the incoming
+  request, it should populate the array with the operator's data. See
+  `update_operator()` function in `libs/operator.php` file for more info.
+* 'request': an instance of `\Symfony\Component\HttpFoundation\Request` class,
   incoming request. Can be used by a plugin to extract an operator.
 
 
 #### Log in
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::OPERATOR_LOGIN`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::OPERATOR_LOGIN` constant.
 
-This event is triggered after an operator logged in using system login form. An
-associative array with the following items is passed to the event handlers:
+This event is triggered after an operator has been logged in using the
+standard login form. An associative array with the following items is passed
+to event handlers:
 
-* "operator": array of the logged in operator info;
-* "remember": boolean, indicates if system should remember operator.
+* 'operator': array containing all data fields of the operator.
+* 'remember': boolean, indicates whether the system should "remember" the
+  operator.
 
 
 #### Log out
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::OPERATOR_LOGOUT`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::OPERATOR_LOGOUT` constant.
 
-This event is triggered after an operator is logged out.
+This event is triggered after an operator has been logged out.
 
 
 #### Create
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::OPERATOR_CREATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::OPERATOR_CREATE` constant.
 
-This event is triggered after an operator has been created. An associative array
-with the following items is passed to the event handlers:
+This event is triggered after an operator has been created. An associative
+array with the following items is passed to event handlers:
 
-* "operator": operator's array.
+* 'operator': array containing all data fields of the operator.
 
 
 #### Update
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::OPERATOR_UPDATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::OPERATOR_UPDATE` constant.
 
-This event is triggered after an operator is saved. An associative array with
-the following items is passed to the event handlers:
+This event is triggered after an operator has been saved. An associative array
+with the following items is passed to event handlers:
 
-* "operator": array, the state of the operator after update.
-* "original_operator": array, the state of the operator before update.
+* 'operator': array, the state of the operator after update.
+* 'original_operator': array, the state of the operator before update.
 
 
 #### Delete
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::OPERATOR_DELETE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::OPERATOR_DELETE` constant.
 
-This event is triggered after an operator has been deleted. An associative array
-with the following items is passed to the event handlers:
+This event is triggered after an operator has been deleted. An associative
+array with the following items is passed to event handlers:
 
-* "id": int, deleted operator ID.
+* 'id': integer, ID of the deleted operator.
 
 
 ### <a name="page-events"></a>Page events
 
 #### Add CSS
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::PAGE_ADD_CSS`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::PAGE_ADD_CSS` constant.
 
-This event is triggered before CSS assets are attached to a page. It provides an
-ability for plugins to add custom CSS files (or inline styles) to a page. An
-associative array with the following items is passed to the event handlers:
+This event is triggered before CSS assets are attached to a page of the
+administrative interface of **Mibew Messenger**. It provides plugins an
+ability to connect pages to custom CSS files or add inline styles to pages.
+An associative array with the following items is passed to event handlers:
 
-* "request": `\Symfony\Component\HttpFoundation\Request`, a request instance.
+* 'request': an instance of `\Symfony\Component\HttpFound-ation\Request` class.
   CSS files will be attached to the requested page.
-* "css": array of assets. Each asset can be either a string with relative URL of
-  a CSS file or an array with "content", "type" and "weight" items. See
-  `\Mibew\Asset\AssetManagerInterface::getCssAssets()` for details of their
-  meaning. Modify this array to add or remove additional CSS files.
+* 'css': array of assets. Each asset can be either a string with the relative
+  URL of a CSS file or an array with 'content', 'type' and 'weight' items. See
+  `\Mibew\Asset\AssetManagerInterface::getCssAssets()` for more info. One
+  should modify this array to add (or remove) extra CSS files.
 
 
 #### Add JavaScript
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::PAGE_ADD_JS`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::PAGE_ADD_JS` constant.
 
-This event is triggered before JavaScript assets are attached to a page. It
-provides an ability for plugins to add custom JavaScript files (or inline
-scripts) to a page. An associative array with the following items is passed to
-the event handlers:
+This event is triggered before JavaScript assets are attached to a page of the
+administrative interface of **Mibew Messenger**. It provides plugins an ability
+to connect pages to custom JavaScript files or add inline scripts to pages.
+An associative array with the following items is passed to event handlers:
 
-* "request": `\Symfony\Component\HttpFoundation\Request`, a
-  request instance. JavaScript files will be attached to the requested
-  page.
-* "js": array of assets. Each asset can be either a string with relative URL of
-  a JavaScript file or an array with "content", "type" and "weight" items. See
-  `\Mibew\Asset\AssetManagerInterface::getJsAssets()` for details of their
-  meaning. Modify this array to add or remove additional JavaScript files.
+* 'request': an instance of `\Symfony\Component\HttpFoundation\Request` class.
+  JavaScript files will be attached to the requested page.
+* 'js': array of assets. Each asset can be either a string with the relative
+  URL of a JavaScript file or an array with 'content', 'type' and 'weight'
+  items. See `\Mibew\Asset\AssetManagerInterface::getJsAssets()` for more info.
+  One should modify this array to add (or remove) extra JavaScript files.
 
 
 #### JavaScipt plugin options
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::PAGE_ADD_JS_PLUGIN_OPTIONS`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::PAGE_ADD_JS_PLUGIN_OPTIONS` constant.
 
 This event is triggered before options of JavaScript plugins are attached to a
-page. It provides an ability for plugins to pass some data to the client side.
-An associative array with the following items is passed to the event handlers:
+page. It provides plugins an ability to pass some data to the client side.
+An associative array with the following items is passed to event handlers:
 
-* "request": `\Symfony\Component\HttpFoundation\Request`, a request instance.
-  Plugins will work at the requested page.
-* "plugins": associative array, whose keys are plugins names and values are
-  plugins options. Modify this array to add or change plugins options.
+* 'request': an instance of `\Symfony\Component\HttpFoundation\Request` class.
+  Options will be attached to the requested page.
+* 'plugins': associative array, whose keys are names of plugins and values are
+  their options. One should modify this array to add (or alter) plugins
+  options.
 
 
 ### <a name="resource-events"></a>Resource events
 
 #### Access denied
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::RESOURCE_ACCESS_DENIED`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::RESOURCE_ACCESS_DENIED` constant.
 
-This event is triggered if the access for resource is denied. An
-associative array with the following items is passed to the event
-handlers:
+This event is triggered if the access to a resource is denied. An associative
+array with the following items is passed to event handlers:
 
-* "request": `\Symfony\Component\HttpFoundation\Request`, incoming request
-  object.
-* "response": `\Symfony\Component\HttpFoundation\Response`, if a plugin wants to
-  send a custom response to the client it should attach a response object to
-  this field.
+* 'request': an instance of `\Symfony\Component\HttpFoundation\Request` class,
+  incoming request object.
+* 'response': an instance of `\Symfony\Component\HttpFoundation\Response`
+  class, if a plugin wants to send a custom response to a client it should
+  attach a response object to this field.
 
 
 #### Not found
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::RESOURCE_NOT_FOUND`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::RESOURCE_NOT_FOUND` constant.
 
 This event is triggered if a resource is not found. An associative array with
-the following items is passed to the event handlers:
+the following items is passed to event handlers:
 
-* "request": `\Symfony\Component\HttpFoundation\Request`, incoming request
-  object.
-* "response": `\Symfony\Component\HttpFoundation\Response`, if a plugin
-  wants to send a custom response to the client it should attach a response
-  object to this field.
+* 'request': an instance of `\Symfony\Component\HttpFoundation\Request` class,
+  incoming request object.
+* 'response': an instance of `\Symfony\Component\HttpFoundation\Response`
+  class, if a plugin wants to send a custom response to a client it should
+  attach a response object to this field.
 
 
 ### <a name="routing-events"></a>Routing events
 
 #### Alter
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::ROUTES_ALTER`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::ROUTES_ALTER` constant.
 
-This event is triggered after all routes are loaded. It provides an ability for
-plugins to alter routes collection before it will be used. An associative array
-with the following items is passed to the event handlers:
+This event is triggered after all routes has been loaded. It provides plugins
+an ability to alter the routes collection before it will be used. An
+associative array with the following items is passed to event handlers:
 
-* "routes" an instance of `\Symfony\Component\Routing\RouteCollection` class.
+* 'routes': an instance of `\Symfony\Component\Routing\RouteCollection` class.
 
 
 ### <a name="thread-events"></a>Thread events
 
 #### Function call
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::THREAD_FUNCTION_CALL`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::THREAD_FUNCTION_CALL` constant.
 
-This event is triggered when an API a function is called at client side in the
-"_chat_" application, but the system is not aware of this function.
+This event is triggered if an API function is called at the client side in
+the **Chat application**, but the system is not aware of this function.
 
-Plugins can implement custom API functions by attaching handlers to the event.
-If a plugin wants to return some results, it should use "results" element of the
-event arguments array (see below).
+Plugins can implement custom API functions by attaching handlers to this event.
+If a plugin should return some results, it should use 'results' element of
+the event arguments array (see below).
 
-An associative array with the following items is passed to the event handlers:
+An associative array with the following items is passed to event handlers:
 
-* "request_processor": an instance of `\Mibew\RequestProcessor\ThreadProcessor`
-  which processes the current call.
-* "function": string, name of the function that was called.
-* "arguments": associative array of arguments that was passed to the function.
-* "results": array, list of function results.
+* 'request_processor': an instance of `\Mibew\RequestProcessor\ThreadProcessor`
+  class that handles the current call.
+* 'function': string, name of the function that was called.
+* 'arguments': associative array of arguments passed to the function.
+* 'results': array, the list of results of the function call.
 
 Here is an example of the event handler:
 
 ```php
 public function callHandler(&$function)
 {
-    // Check that the function we want to implement is called.
-    if ($function['function'] == 'microtime') {
+    // Ensure that the function we want to implement was called.
+    if ($function['function'] === 'microtime') {
         // Check some function's arguments.
         $as_float = empty($function['arguments']['as_float'])
             ? false
@@ -413,168 +424,182 @@ public function callHandler(&$function)
 
 #### Create
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::THREAD_CREATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::THREAD_CREATE` constant.
 
 This event is triggered after a thread has been created. An associative array
-with the following items is passed to the event handlers:
+with the following items is passed to event handlers:
 
-* "thread": an instance of `\Mibew\Thread`.
+* 'thread': an instance of `\Mibew\Thread` class, the state of the created
+  thread.
 
 
 #### Update
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::THREAD_UPDATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::THREAD_UPDATE` constant.
 
-This event is triggered after a thread is saved. An associative array with the
-following items is passed to the event handlers:
+This event is triggered after a thread has been saved. An associative array
+with the following items is passed to event handlers:
 
-* "thread": an instance of `\Mibew\Thread`, state of the thread after the
+* 'thread': an instance of `\Mibew\Thread` class, the state of the thread after
   update.
-* "original_thread": an instance of `\Mibew\Thread`, state of the thread before
-  the update.
+* 'original_thread': an instance of `\Mibew\Thread` class, the state of the
+  thread before update.
 
 
 #### Delete
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::THREAD_DELETE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::THREAD_DELETE` constant.
 
 This event is triggered after a thread has been deleted. An associative array
-with the following items is passed to the event handlers:
+with the following items is passed to event handlers:
 
-* "id": int, deleted thread ID.
+* 'id': integer, ID of the deleted thread.
 
 
 #### Close
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::THREAD_CLOSE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::THREAD_CLOSE` constant.
 
 This event is triggered after a thread has been closed. An associative array
-with the following items is passed to the event handlers:
+with the following items is passed to event handlers:
 
-* "thread": an instance of `\Mibew\Thread`.
+* 'thread': an instance of `\Mibew\Thread` class, the state of the closed
+  thread.
 
 
 #### Post message
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::THREAD_POST_MESSAGE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::THREAD_POST_MESSAGE` constant.
 
-This event is triggered before a message has been posted to thread. It provides
-an ability for plugins to alter message, its kind or options. An associative
-array with the following items is passed to the event handlers:
+This event is triggered before a message has been posted to a thread. It
+provides plugins an ability to alter the message itself and/or its kind or
+options. An associative array with the following items is passed to event
+handlers:
 
-* "thread": an instance of `\Mibew\Thread`.
-* "message_kind": int, message kind.
-* "message_body": string, message body.
-* "message_options": associative array, list of options passed to
-  `\Mibew\Thread::postMessage()` method as the third argument.
+* 'thread': an instance of `\Mibew\Thread` class, the state of the thread.
+* 'message_kind': integer, a kind of the message. See `KIND_*` constants in
+  `\Mibew\Thread` for more info.
+* 'message_body': string, a body of the message.
+* 'message_options': associative array, the list of options passed to
+  `\Mibew\Thread::postMessage()` method as a third argument.
 
 
 #### Alter messages
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::THREAD_GET_MESSAGES_ALTER`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::THREAD_GET_MESSAGES_ALTER` constant.
 
-This event is triggered after messages related with a thread are loaded. It
-provides an ability for plugins to alter messages set. An associative array with
-the following items is passed to the event handlers:
+This event is triggered after messages related to a thread has been loaded. It
+provides plugins an ability to alter messages. An associative array with the
+following items is passed to event handlers:
 
-* "thread": an instance of `\Mibew\Thread`.
-* "messages": array, list of messages. Each message is an associative array. See
-  `\Mibew\Thread::getMessages()` return value for details of its structure.
+* 'thread': an instance of `\Mibew\Thread` class, the state of the thread.
+* 'messages': array, the list of messages. Each message is an associative
+  array. See the return value of `\Mibew\Thread::getMessages()` method for more
+  info.
 
 
-#### User is ready (since 2.1.0)
+#### User is ready (since Mibew Messenger 2.1.0)
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::THREAD_USER_IS_READY`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::THREAD_USER_IS_READY` constant.
 
-This event is triggered after the thread is created, the user passed pre-chat
-survey and all system messages are sent to him. This event is not triggered if
-there are no online operators and the chat cannot be started. An associative
-array with the following items is passed to the event handlers:
+This event is triggered after the thread has been created, the user
+has successfully passed pre-chat survey and all system messages has been sent
+to him. This event is not triggered if there are no operators online and
+therefore the chat cannot be started. An associative array with the following
+items is passed to event handlers:
 
-* "thread": an instance of `\Mibew\Thread`.
+* 'thread': an instance of `\Mibew\Thread` class, the state of the thread.
 
 
 ### <a name="users-events"></a>Users events
 
 #### Alter threads
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::USERS_UPDATE_THREADS_ALTER`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::USERS_UPDATE_THREADS_ALTER` constant.
 
-This event is triggered before the threads list is sent to the "users" client
-side application. It provide an ability to alter the list. A plugin can attach
-some fields to each thread or completeley replace the whole list. An associative
-array with the following items is passed to the event handlers:
+This event is triggered before the list of threads is sent to the
+**Users application** on the client side. It provides plugins an ability to
+alter the list. A plugin can attach some custom fields to each thread or even
+completely replace the whole list. An associative array with the following
+items is passed to event handlers:
 
-* "threads": array of threads data arrays.
+* 'threads': array of threads, each item is the data related to a single
+  thread. See `\Mibew\RequestProcessor\UsersProcessor\apiUpdateThreads()`
+  method for more info.
 
 
-#### Load visitors
+#### <a name="load-visitors-event"></a>Load visitors
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::USERS_UPDATE_VISITORS_LOAD`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::USERS_UPDATE_VISITORS_LOAD` constant.
 
-This event is triggered before the list of on site visitors is loaded for
-sending to the "users" client side application. It provide an ability for
-plugins to load, sort and limit visitors list. An associative array with the
-following items is passed to the event handlers:
+This event is triggered before the list of active site visitors is loaded to be
+sent to the **Users application** on the client side. It provides plugins an
+ability to load, sort and/or trim the visitors list. An associative array with
+the following items is passed to event handlers:
 
-* "visitors": array of visitors data arrays. Each visitor array must contain at
-  least the following keys: "id", "userName", "userAgent", "userIp", "remote",
-  "firstTime", "lastTime", "invitations", "chats", "invitationInfo". If there
-  are no visitors an empty array should be used.
+* 'visitors': array of visitors, each item is the data related to a single
+   visitor. Each visitor array must contain at least following keys:
+   'id', 'userName', 'userAgent', 'userIp', 'remote', 'firstTime', 'lastTime',
+   'invitations', 'chats', 'invitationInfo'. If there are no active visitors,
+   an empty array should be used.
 
-If the "visitors" item was not set by a plugin the default system loader
-will be used.
+If a plugin will not set the 'visitors' item, the default system loader will
+be used.
 
 
 #### Alter visitors
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::USERS_UPDATE_VISITORS_ALTER`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::USERS_UPDATE_VISITORS_ALTER` constant.
 
-This event is triggered before the on site visitors list is sent to the
-"_users_" client application. It provide an ability to alter the list. A plugin
-can attach some fields to each visitor or completeley replace the whole list. An
-associative array with the following items is passed to the event handlers:
+This event is triggered before the list of active site visitors list is sent to
+the **Users application** on the client side. It provides plugins an ability to
+alter the list. A plugin can attach some custom fields to each visitor or even
+completely replace the whole list. An associative array with the following
+items is passed to event handlers:
 
-* "visitors": array of visitors data arrays.
+* 'visitors': array of visitors, each item is the data related to a single
+  visitor. See '[Load visitors](#load-visitors-event)' event and
+  `\Mibew\RequestProcessor\UsersProcessor\apiUpdateVisitors()` method
+  for more info.
 
 
 #### Function call
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::USERS_FUNCTION_CALL`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::USERS_FUNCTION_CALL` constant.
 
-This event is triggered when an API a function is called at client side in the
-"_users_" application, but the system is not aware of this function.
+This event is triggered if an API function is called at the client side in
+the **Users application**, but the system is not aware of this function.
 
-Plugins can implement custom API functions by attaching handlers to the event.
-If a plugin wants to return some results, it should use "results" element of the
-event arguments array (see below).
+Plugins can implement custom API functions by attaching handlers to this event.
+If a plugin should return some results, it should use 'results' element of
+the event arguments array (see below).
 
-An associative array with the following items is passed to the event handlers:
+An associative array with the following items is passed to event handlers:
 
-* "request_processor": an instance of `\Mibew\RequestProcessor\UsersProcessor`
-  which processes the current call.
-* "function": string, name of the function that was called.
-* "arguments": associative array of arguments that was passed to the function.
-* "results": array, list of function results.
+* 'request_processor': an instance of `\Mibew\RequestProcessor\UsersProcessor`
+  class that handles the current call.
+* 'function': string, name of the function that was called.
+* 'arguments': associative array of arguments passed to the function.
+* 'results': array, the list of results of the function call.
 
 Here is an example of the event handler:
 
 ```php
 public function callHandler(&$function)
 {
-    // Check that the function we want to implement is called.
-    if ($function['function'] == 'microtime') {
+    // Ensure that the function we want to implement is called.
+    if ($function['function'] === 'microtime') {
         // Check some function's arguments.
         $as_float = empty($function['arguments']['as_float'])
             ? false
@@ -588,88 +613,96 @@ public function callHandler(&$function)
 
 ### <a name="visitor-events"></a>Visitor events
 
-#### Create
+#### <a name="visitor-create-event"></a>Create
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::VISITOR_CREATE`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::VISITOR_CREATE` constant.
 
-This event is triggered when a visitor is tracked by the widget for the first
-time. An associative array with the following items is passed to the event
-handlers:
+This event is triggered when a visitor has been tracked by the **Widget** for
+the first time. An associative array with the following items is passed to
+event handlers:
 
-* "visitor": array, list of visitor's info. See returned value of
-  `track_get_visitor_by_id()` function for details of its structure.
+* 'visitor': array populated with the data of a visitor. See returned value of
+  `track_get_visitor_by_id()` function from `libs/track.php` for more info.
 
 
 #### Track
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::VISITOR_TRACK`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::VISITOR_TRACK` constant.
 
-This event is triggered every time a visitor is tracked by the widget. An
-associative array with the following items is passed to the event handlers:
+This event is triggered every time a visitor has been tracked by the
+**Widget**. An associative array with the following items is passed to event
+handlers:
 
-* "visitor": array, list of visitor's info. See returned value of
-  `track_get_visitor_by_id()` function for details of its structure.
+* 'visitor': array populated with the data of a visitor. See returned value of
+  `track_get_visitor_by_id()` function from `libs/track.php` for more info.
 
+Note that when a visitor will be tracked by the **Widget** for the first time,
+initially the '[Create](#visitor-create-event)' event will be triggered, and
+the 'Track' event will be triggered only afterwards.
 
 #### Delete old
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::VISITOR_DELETE_OLD`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::VISITOR_DELETE_OLD` constant.
 
-This event is triggered after old visitors are deleted. An associative array
-with the following items is passed to the event handlers:
+This event is triggered after old visitors have been deleted. An associative
+array with the following items is passed to event handlers:
 
-* "visitors": array, list of removed visitors' IDs.
+* 'visitors': array, the list of IDs of removed visitors.
 
 
 ### <a name="widget-events"></a>Widget events
 
 #### Alter response
 
-The event can be referenced using value of `\Mibew\EventDispatcher\Events::WIDGET_RESPONSE_ALTER`
-constant.
+The event can be referenced using the value of
+`\Mibew\EventDispatcher\Events::WIDGET_RESPONSE_ALTER` constant.
 
-This event is triggered every time the widget data is ready to be sent. An
-associative array with the following items is passed to the event listeners:
+This event is triggered every time the **Widget** data is ready to be sent. An
+associative array with the following items is passed to event listeners:
 
-* "visitor": array, visitor's info.
-* "request": an instance of `\Symfony\Component\HttpFoundation\Request` which
-  represents incoming request.
-* "response": array, set of data that will be sent to the widget. See
-  description of its stucture and use case below.
-* "route_url_generator": an instance of `\Mibew\Routing\Generator\SecureUrlGeneratorInterface`.
-* "asset_url_generator": an instance of `\Mibew\Asset\Generator\UrlGeneratorInterface`.
+* 'visitor': array populated with the data of a visitor. See returned value of
+  `track_get_visitor_by_id()` function from `libs/track.php` for more info.
+* 'request' an instance of `\Symfony\Component\HttpFoundation\Request` class,
+  incoming request object.
+* 'response': array, a set of data that will be sent to the **Widget**. See
+  description of its stucture and an example use case below.
+* 'route_url_generator': an instance of
+  `\Mibew\Routing\Generator\SecureUrlGeneratorInterface` class.
+* 'asset_url_generator': an instance of
+  `\Mibew\Asset\Generator\UrlGeneratorInterface` class.
 
-This event can be used to do something at page the visitor is currenlty browsing.
+This event can be used to perform something at the page the visitor is
+currenlty browsing.
 
-For example we can call a function every time the widget get the response from
-the server. Here is the event listener code from a plugin:
+For example we can call a function every time the **Widget** gets a response
+from the **Server**. Here is the event listener code from a plugin:
 
 ```php
 public function callHandler(&$args)
 {
-    // This is just a shortcut for URL generator.
+    // This is just a shortcut for the URL generator.
     $g = $args['asset_url_generator'];
 
-    // The external libraries can be loaded before the function will be
-    // called. There can be as many libraries as needed (even none).
-    // The keys of the "load" array are libraries IDs and values are
+    // External libraries could be loaded before the function will be
+    // called. There could be as many libraries as needed (even none).
+    // Keys of the 'load' array are IDs of the libraries and values are
     // their URLs.
     $args['response']['load']['the_lib'] = 'http://example.com/lib.js';
     $args['response']['load']['the_func'] = $g->generate($this->getFilesPath() . '/func.js');
 
-    // The "handlers" array contains a list of functions that should be
+    // The 'handlers' array contains a list of functions that should be
     // called.
     $args['response']['handlers'][] = 'usefulFunc';
 
-    // The "dependencies" array lists all libraries a function depend on.
-    // In this example "usefulFunc" depends on libraries with "the_lib"
-    // and "the_func" IDs.
+    // The 'dependencies' array contains a list of all libraries a function depends on.
+    // In this example 'usefulFunc' depends on libraries with IDs equal to 'the_lib'
+    // and 'the_func'.
     $args['response']['dependencies']['usefulFunc'] = array('the_lib', 'the_func');
 
-    // Some extra data can be passed to the function.
+    // Some extra data could be passed to the function too.
     $args['response']['data']['usefulFunc'] = array('time' => microtime(true));
 }
 ```
@@ -678,8 +711,8 @@ Here is the JavaScript part of the example:
 
 ```javascript
 (function(Mibew) {
-    // Notice the full function name. All callable functions must be
-    // defined as properties of Mibew.APIFunctions object.
+    // Pay attention to the full function name. All callable functions must be
+    // defined as a properties of Mibew.APIFunctions object.
     Mibew.APIFunctions.usefulFunc = function(data) {
         // Do some job here.
         console.dir(data.usefulFunc);
