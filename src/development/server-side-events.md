@@ -294,7 +294,7 @@ administrative interface of **Mibew Messenger**. It provides plugins an
 ability to connect pages to custom CSS files or add inline styles to pages.
 An associative array with the following items is passed to event handlers:
 
-* _'request'_: an instance of `\Symfony\Component\HttpFound-ation\Request`
+* _'request'_: an instance of `\Symfony\Component\HttpFoundation\Request`
   class. CSS files will be attached to the requested page.
 * _'css'_: array of assets. Each asset can be either a string with the relative
   URL of a CSS file or an array with _'content'_, _'type'_ and _'weight'_
