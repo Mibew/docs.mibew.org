@@ -5,7 +5,7 @@
     "metalsmith-navigation": "https://github.com/unstoppablecarl/metalsmith-navigation/archive/82a23b98a659097355ef784ecebbee1a56c36aac.tar.gz",
     "metalsmith-assets": "^0.1.0",
     "metalsmith": "^1.5.0",
-    "handlebars": "^3.0.1",
+    "handlebars": ">=4.0.0",
     "bower": "^1.4.1"
   }
 }
